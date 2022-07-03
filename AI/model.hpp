@@ -17,7 +17,7 @@ class Model{
 		// called by every update time
 		// GameMap is current game status
 		// return integer array is as same as the key_state array
-		virtual int *update(object_list) = 0;
+		virtual int *update(std::list<Object*> object_list) = 0;
 };
 
 #endif

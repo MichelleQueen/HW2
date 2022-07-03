@@ -1,5 +1,5 @@
 class AI: public Model{
     public:
-        void initial()
-        void update(list object_list)
+        void initial();
+        void update(std::list<Object*> object_list);
 };

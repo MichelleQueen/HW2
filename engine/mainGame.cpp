@@ -142,7 +142,7 @@ void MainGame::destroy(void) {
 MainGame::~MainGame(){
 	// release object resource
 	for(auto obj : this->object_list){
-		obj->destroy();
+		//obj->destroy();         與下面那行重複意思
 		delete obj;
 	}
 	this->destroy();
