@@ -23,18 +23,13 @@ void AI::update(list<Object*> object_list){
     for (auto it = object_list.begin(); it != object_list.end(); ++it) {
         if (dynamic_cast<Player*>(it)  != 0 ){ //find player
             this->img = ImageProcess::load_bitmap_at_size(path.c_str(), w, h);
-            if (this->img = "./image/ship1.png";){ //idk how ro write
-                 P1 = dynamic_cast<Player*>(it);  
+            if (this->img = "./image/ship1.png";){ //check if is P1 (idk how to write
+                P1 = dynamic_cast<Player*>(it);  
             }
             else{
                 P2 = dynamic_cast<Player*>(it);
             }
 
-        }
-       
-        if(P1 != nullptr){
-        //換 P2 被 cast
-            P2 = dynamic_cast<Player*>(it);  
         }
     }
     
@@ -50,19 +45,19 @@ void AI::update(list<Object*> object_list){
     }
 
     //其次 和potion的位置比較上下左右(以獲得藥水)
-    if(potion->x < p2->x){
+    if(potion->x < P2->x){
         action[ALLEGRO_KEY_LEFT]=1;
     }
 
-    if(potion->x > p2->x){
+    if(potion->x > P2->x){
         action[ALLEGRO_KEY_RIGHT]=1;
     }
 
-    if(potion->y  >  p2->y){
+    if(potion->y  >  P2->y){
         action[ALLEGRO_KEY_UP]=1;
     }
 
-    if(potion->y < p2->y){
+    if(potion->y < P2->y){
         action[ALLEGRO_KEY_DOWN]=1;
     }
 
