@@ -22,12 +22,12 @@ extern const int word_space;
 class Object{
 	public:	
 		// construct with image path name and size
-		Object(float _x, float _y, float _speedX, float _speedY, std::string path, int w, int h, string picture){
+		Object(float _x, float _y, float _speedX, float _speedY, std::string path, int w, int h){
 			this->x = _x;
 			this->y = _y;
 			this->speedX = _speedX;
 			this->speedY = _speedY;
-			this->picture = picture;
+			
 
 			this->img = ImageProcess::load_bitmap_at_size(path.c_str(), w, h);
 			if (!this->img)
