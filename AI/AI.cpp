@@ -20,8 +20,8 @@ void AI::update(list<Object*> object_list){
     }  
     //最優先 和 player1 比較左右(當player1 的跟屁蟲)
     Player *P1, *P2;
-    for (auto it = object_list.begin(); it != object_list.end(); ++it) {
-        if (dynamic_cast<Player*>(it)  != 0 ){ //find player
+    for (auto it = object_list.begin(); it != object_list.end(); it++) {
+        if (dynamic_cast<Player*> (*it)  != 0 ){ //find player
             this->img = ImageProcess::load_bitmap_at_size(path.c_str(), w, h);
             if (this->img = "./image/ship1.png";){ //check if is P1 (idk how to write
                 P1 = dynamic_cast<Player*>(it);  

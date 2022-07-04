@@ -21,6 +21,8 @@ class MainGame : public Scene{
 		ALLEGRO_BITMAP *asteroid_img;
 		ALLEGRO_BITMAP *bullet_img;
 		ALLEGRO_BITMAP *bullet2_img;
+		ALLEGRO_BITMAP *bullet3_img;
+		ALLEGRO_BITMAP *bullet4_img;
 		int winner;
 		void draw(void) override;
 		void destroy(void) override;

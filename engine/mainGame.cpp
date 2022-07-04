@@ -16,6 +16,11 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <ctime>
+
+//int countdown(int )
+
+
 
 // check collision
 bool collision(Object *a, Object *b){
@@ -48,13 +53,20 @@ MainGame::MainGame() {
         LOG::game_abort("failed to load asteroid image");
 	}
 	// load bullet image
-	this->bullet_img = ImageProcess::load_bitmap_at_size("./image/bullet.png", scale, scale * 2);
-	if (!this->bullet_img)
+	this->bullet1_img = ImageProcess::load_bitmap_at_size("./image/bullet1.png", scale, scale * 2);
+	if (!this->bullet1_img)
 		LOG::game_abort("failed to load bullet image");
 	// load another bullet image
 	this->bullet2_img = ImageProcess::load_bitmap_at_size("./image/bullet2.png", scale, scale * 2);
 	if (!this->bullet2_img)
 		LOG::game_abort("failed to load bullet2 image");
+	this->bullet3_img = ImageProcess::load_bitmap_at_size("./image/bullet3.png", scale, scale * 2);
+	if (!this->bullet3_img)
+		LOG::game_abort("failed to load bullet3 image");
+	this->bullet4_img = ImageProcess::load_bitmap_at_size("./image/bullet4.png", scale, scale * 2);
+	if (!this->bullet4_img)
+		LOG::game_abort("failed to load bullet3 image");
+	
 	
 }
 
