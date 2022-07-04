@@ -27,7 +27,7 @@ class Object{
 			this->y = _y;
 			this->speedX = _speedX;
 			this->speedY = _speedY;
-			
+			this->path= path;
 
 			this->img = ImageProcess::load_bitmap_at_size(path.c_str(), w, h);
 			if (!this->img)
@@ -56,6 +56,10 @@ class Object{
 		float y;
 		float speedX;
 		float speedY;
+		string path;
+
+
+
 		// this will called when scene want to update the object position
 		virtual bool update(void){
 			this->x += this->speedX;
