@@ -12,14 +12,14 @@ class MainGame : public Scene{
 		//store object which in the scene
 		std::list<Object*> object_list;
 		// store P1 and P2 
-		Player *P1, *P2;
+		Player *P1, *P2, *P3, *P4;
 	public:
 		MainGame();
 		virtual ~MainGame();
 		// store commonly used object image
 		ALLEGRO_FONT *font;
 		ALLEGRO_BITMAP *asteroid_img;
-		ALLEGRO_BITMAP *bullet_img;
+		ALLEGRO_BITMAP *bullet1_img;
 		ALLEGRO_BITMAP *bullet2_img;
 		ALLEGRO_BITMAP *bullet3_img;
 		ALLEGRO_BITMAP *bullet4_img;

@@ -18,15 +18,7 @@
 #include <allegro5/allegro_ttf.h>
 #include <ctime>
 
-int t=10;
-double timer=clock();
-while (t>0){
-	if (clock()>timer+1000){
-		timer=clock();//after each 10 sec, update timer 
-		LOG::game_log(t);
-		t--;
-	}
-}
+
 
 
 
@@ -183,16 +175,27 @@ void MainGame::update(void) {
 	// update player parameter
 	this->P1->energy = std::min(100, this->P1->energy + 1);
 	this->P2->energy = std::min(100, this->P2->energy + 1);
+	this->P3->energy = std::min(100, this->P3->energy + 1);
+	this->P4->energy = std::min(100, this->P4->energy + 1);
+
 	this->P1->bullet_power += this->P1->exp / 100;
 	this->P1->exp %= 100;
 	this->P2->bullet_power += this->P2->exp / 100;
 	this->P2->exp %= 100;
+	this->P3->bullet_power += this->P2->exp / 100;
+	this->P3->exp %= 100;
+	this->P4->bullet_power += this->P2->exp / 100;
+	this->P4->exp %= 100;
+	
 	this->P1->bullet_cool = std::max(0, this->P1->bullet_cool - 1);
 	this->P2->bullet_cool = std::max(0, this->P2->bullet_cool - 1);
+	this->P3->bullet_cool = std::max(0, this->P3->bullet_cool - 1);
+	this->P4->bullet_cool = std::max(0, this->P4->bullet_cool - 1);
 
 	// if a player dies then the game ends.
-	if(this->P1->hp <= 0 || this->P2->hp <= 0){
-		if(this->P1->hp <= 0){
+	if(this->P1->hp <= 0 || this->P2->hp <= 0 || this->P3->hp <= 0|| this->P->hp <= 0){
+		
+		if(this->P1->hp <= 0 && this->P2->hp > 0 && this->P3->hp > 0 && this->P4->hp > 0 ){
 			this->winner = 2;
 		}else{
 			this->winner = 1;
@@ -320,6 +323,13 @@ void MainGame::update(void) {
 				}else if(bu->type == 2){
 					py->hp -= this->P2->bullet_power;
 				}
+				else if(bu->type == 3){
+					py->hp -= this->P3->bullet_power;
+				}
+				else if(bu->type == 4){
+					py->hp -= this->P4->bullet_power;
+				}
+
 				// erase bullet
 				delete *to;
 				to = this->object_list.erase(to);
@@ -340,6 +350,12 @@ void MainGame::update(void) {
 				}else if(bu->type == 2){
 					this->P2->exp += 20;
 				}
+				else if(bu->type == 3){
+					this->P3->exp += 20;
+				}
+				else if(bu->type == 4){
+					this->P4->exp += 20;
+				}
 				// erase from(bullet)
 				flag = 1;
 				// erase asteroid
@@ -356,6 +372,12 @@ void MainGame::update(void) {
 				}else if(po->type == 1){
 					py->bullet_power += 1;
 				}else if(po->type == 2){
+					py->energy += 100;
+				}
+				else if(po->type == 3){  // 3 for shield 20 sec.
+					py->shield+= 20;
+				}
+				else if(po->type == 4){   
 					py->energy += 100;
 				}
 				// erase potion

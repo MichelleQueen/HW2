@@ -27,7 +27,7 @@ class Object{
 			this->y = _y;
 			this->speedX = _speedX;
 			this->speedY = _speedY;
-			this->path= path;
+			this->Path = path;
 
 			this->img = ImageProcess::load_bitmap_at_size(path.c_str(), w, h);
 			if (!this->img)
@@ -56,7 +56,7 @@ class Object{
 		float y;
 		float speedX;
 		float speedY;
-		string path;
+		string Path;
 
 
 
