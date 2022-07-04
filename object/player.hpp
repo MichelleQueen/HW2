@@ -16,6 +16,7 @@ class Player : public Object{
         int energy; // between 0 and 100. shooting a bullet will decrease by 20.
 		int bullet_cool; // between 0 and 5. you can shoot only if bullet_cool == 0.
         // You can check hackmd and other codes for more information.
-};
+        int shieldTimer; //record how much time left for the shield to be invalid
+};      
 
 #endif

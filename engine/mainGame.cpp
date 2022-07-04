@@ -18,7 +18,16 @@
 #include <allegro5/allegro_ttf.h>
 #include <ctime>
 
-//int countdown(int )
+int t=10;
+double timer=clock();
+while (t>0){
+	if (clock()>timer+1000){
+		timer=clock();//after each 10 sec, update timer 
+		LOG::game_log(t);
+		t--;
+	}
+}
+
 
 
 
@@ -112,6 +121,9 @@ void MainGame::draw(void) {
 	info_message = "Energy:" + intToChar(this->P2->energy);
 	al_draw_text(this->font, al_map_rgb(255, 255, 255), left_space + word_space * 4, 30,
 				ALLEGRO_ALIGN_CENTER, info_message.c_str());
+	info_message = "Shield:" + intToChar(this->P2->shieldTimer);
+	al_draw_text(this->font, al_map_rgb(255, 255, 255), left_space + word_space * 5, 30,
+				ALLEGRO_ALIGN_CENTER, info_message.c_str());
 		
 	al_draw_text(this->font, al_map_rgb(255, 255, 255), left_space, 750,
 				ALLEGRO_ALIGN_CENTER, "Player 1");
@@ -126,6 +138,9 @@ void MainGame::draw(void) {
 				ALLEGRO_ALIGN_CENTER, info_message.c_str());
 	info_message = "Energy:" + intToChar(this->P1->energy);
 	al_draw_text(this->font, al_map_rgb(255, 255, 255), left_space + word_space * 4, 750,
+				ALLEGRO_ALIGN_CENTER, info_message.c_str());
+	info_message = "Shield:" + intToChar(this->P1->shieldTimer);
+	al_draw_text(this->font, al_map_rgb(255, 255, 255), left_space + word_space * 5, 750,
 				ALLEGRO_ALIGN_CENTER, info_message.c_str());
 
 	// Draw comic.

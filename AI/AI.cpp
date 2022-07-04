@@ -24,24 +24,32 @@ void AI::update(list<Object*> object_list){
         if (dynamic_cast<Player*> (*it)  != 0 ){ //find player
             this->img = ImageProcess::load_bitmap_at_size(path.c_str(), w, h);
             if (this->img = "./image/ship1.png";){ //check if is P1 (idk how to write
-                P1 = dynamic_cast<Player*>(it);  
+                P1 = dynamic_cast<Player*>(*it);  
             }
             else{
-                P2 = dynamic_cast<Player*>(it);
+                P2 = dynamic_cast<Player*>(*it);
             }
-
         }
     }
     
     if(P1->x   <   P2->x){
         action[ALLEGRO_KEY_LEFT]=1;
     }
+    
     if(P1->x   >   P2->x){
         action[ALLEGRO_KEY_RIGHT]=1;
     }
 
     if(P1->x   =   P2->x){
-        //發射bullet
+            // when shoot, create new bullet object in front of AI
+        if(key_state[ALLEGRO_KEY_SPACE] && this->P1->energy >= 20 && this->P1->bullet_cool == 0){
+            this->P1->bullet_cool = 5;
+            this->P1->energy -= 20;
+            ALLEGRO_BITMAP *tmp = al_clone_bitmap(this->bullet_img);
+            Object *bullet = new Bullet(this->P1->x + 1, this->P1->y - 1, 0, -1, tmp, 1);
+            this->object_list.push_back(bullet);
+	}
+
     }
 
     //其次 和potion的位置比較上下左右(以獲得藥水)
