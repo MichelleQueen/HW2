@@ -9,7 +9,7 @@
 #include "engine/mainGame.hpp"
 #include "engine/menu.hpp"
 #include "engine/end.hpp"
-
+///
 ALLEGRO_DISPLAY *game_display;
 ALLEGRO_FONT *font;
 ALLEGRO_BITMAP *img;

@@ -9,6 +9,7 @@ Player::Player(float _x, float _y, float _speedX, float _speedy, std::string pat
 	this->exp = 0;
 	this->energy = 100;
 	this->bullet_cool = 0;
+	this->shieldTimer=0;
 }
 
 // update new position and reset speed to avoid repeat move
@@ -17,6 +18,7 @@ bool Player::update() {
 	this->y += this->speedY;
 	this->speedX = 0;
 	this->speedY = 0;
+	this->shieldTimer += 
 	return true;
 }
 
